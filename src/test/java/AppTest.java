@@ -38,35 +38,38 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Jimmy");
   }
 
-  // @Test
-  // public void taskIsDisplayedTest() {
-  //   goTo("http://localhost:4567/tasks/new");
-  //   fill("#description").with("Mow the lawn");
-  //   submit(".btn");
-  //   click("a", withText("View tasks"));
-  //   assertThat(pageSource()).contains("Mow the lawn");
-  // }
-  // @Test
-  // public void taskIsDisplayedTest() {
-  //   goTo("http://localhost:4567/tasks/new");
-  //   fill("#description").with("Mow the lawn");
-  //   submit(".btn");
-  //   click("a", withText("View tasks"));
-  //   assertThat(pageSource()).contains("Mow the lawn");
-  // }
-  //
-  // @Test
-  // public void multipleTasksAreDisplayedTest() {
-  //   goTo("http://localhost:4567/tasks/new");
-  //   fill("#description").with("Mow the lawn");
-  //   submit(".btn");
-  //   goTo("http://localhost:4567/tasks/new");
-  //   fill("#description").with("Buy groceries");
-  //   submit(".btn");
-  //   click("a", withText("View tasks"));
-  //   assertThat(pageSource()).contains("Mow the lawn");
-  //   assertThat(pageSource()).contains("Buy groceries");
-  // }
+  @Test
+  public void ClientIsSaveableTest() {
+    goTo("http://localhost:4567/");
+    fill("#stylistName").with("Jimmy");
+    submit(".btn");
+    click("a", withText("Jimmy"));
+    assertThat(pageSource()).contains("Add a Client");
+  }
+  @Test
+  public void ClientIsDisplayedTest() {
+    goTo("http://localhost:4567/");
+    fill("#stylistName").with("Jimmy");
+    submit(".btn");
+    click("a", withText("Jimmy"));
+    fill("#name").with("John");
+    submit(".btn");
+    assertThat(pageSource()).contains("John");
+  }
+
+  @Test
+  public void multipleClientsAreDisplayedTest() {
+    goTo("http://localhost:4567/");
+    fill("#stylistName").with("Jimmy");
+    submit(".btn");
+    click("a", withText("Jimmy"));
+    fill("#name").with("John");
+    submit(".btn");
+    fill("#name").with("Mary");
+    submit(".btn");
+    assertThat(pageSource()).contains("John");
+    assertThat(pageSource()).contains("Mary");
+  }
   //
   // @Test
   // public void taskShowPageDisplaysDescription() {
