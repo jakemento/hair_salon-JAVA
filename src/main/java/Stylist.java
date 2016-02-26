@@ -58,15 +58,15 @@ public class Stylist {
   }
 
 //
-//   public void update(String type) {
-//     this.type = type;
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "UPDATE cuisine SET type = :type WHERE cuisine_id = :cuisine_id";
-//       con.createQuery(sql)
-//       .addParameter("cuisine_id", cuisine_id)
-//       .addParameter("type", type)
-//       .executeUpdate();
-//       }
+  public void update(String name) {
+    this.name = name;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .addParameter("name", name)
+      .executeUpdate();
+      }
 //
 //   }
 //     public void deleteCuisine(int cuisine_id) {
@@ -87,5 +87,5 @@ public class Stylist {
 //           .addParameter("cuisine_id", this.cuisine_id)
 //           .executeAndFetch(Restaurant.class);
 //         }
-      // }
+      }
 }

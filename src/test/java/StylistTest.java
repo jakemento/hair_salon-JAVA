@@ -29,16 +29,15 @@ public class StylistTest {
   }
 
 
-  // @Test
-  // public void update_Cuisine_true() {
-  //   Cuisine testCuisine = new Cuisine("mexican");
-  //   testCuisine.save();
-  //   testCuisine.update("American");
-  //   Cuisine savedCuisine = Cuisine.all().get(0);
-  //   //savedCuisine.save();
-  //   assertEquals(savedCuisine.getType(), "American");
-  // }
-  //
+  @Test
+  public void update_Stylist_true() {
+    Stylist testStylist = new Stylist("Bob");
+    testStylist.save();
+    testStylist.update("Jim");
+    Stylist savedStylist = Stylist.all().get(0);
+    assertEquals(savedStylist.getName(), "Jim");
+  }
+
   // @Test
   // public void Cuisine_deletes_true() {
   //   Cuisine myCuisine = new Cuisine("mexican");
