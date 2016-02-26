@@ -56,17 +56,16 @@ public class Client {
     }
   }
 //
-//   public void update(String name, String description, int cuisine_id) {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "UPDATE restaurants SET id = :id, name = :name, description = :description, cuisine_id = :cuisine_id WHERE id = :id";
-//       con.createQuery(sql)
-//       .addParameter("id", id)
-//       .addParameter("name", name)
-//       .addParameter("description", description)
-//       .addParameter("cuisine_id", cuisine_id)
-//       .executeUpdate();
-//       }
-//   }
+  public void update(String name, int stylist_id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET id = :id, name = :name, stylist_id = :stylist_id WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .addParameter("name", name)
+      .addParameter("stylist_id", stylist_id)
+      .executeUpdate();
+      }
+  }
 //
 //   public static void deleteRestaurant(int id) {
 //     String sql = "DELETE FROM restaurants WHERE id=:id";

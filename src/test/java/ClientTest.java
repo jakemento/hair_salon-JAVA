@@ -27,14 +27,14 @@ public class ClientTest {
     assertTrue(myClient.equals(savedClient));
   }
 
-  // @Test
-  // public void update_restaurant_true() {
-  //   Restaurant testRestaurant = new Restaurant("Voodoo Donuts", "best donuts around", 1);
-  //   testRestaurant.save();
-  //   testRestaurant.update("Sesame Donuts", "best donuts around", 1);
-  //   Restaurant savedRestaurant = Restaurant.all().get(0);
-  //   assertEquals(savedRestaurant.getName(), "Sesame Donuts");
-  // }
+  @Test
+  public void update_client_true() {
+    Client testClient = new Client("John", 1);
+    testClient.save();
+    testClient.update("James", 1);
+    Client savedClient = Client.all().get(0);
+    assertEquals(savedClient.getName(), "James");
+  }
   //
   // @Test
   // public void restaurant_deletes_true() {
