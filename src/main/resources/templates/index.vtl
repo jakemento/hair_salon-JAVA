@@ -1,4 +1,4 @@
-<h1> Stylist LIST </h1>
+<h1> Stylist list: </h1>
 
 
 #foreach ($stylist in $stylists)
@@ -6,15 +6,10 @@
 #end
 
 
-
+<h1> <label> Add stylist:</label> </h1>
 <form action="/" method="post">
   <input id="stylistName" name="stylistName" type="text">
-  <br>
-  <h2> <label> Add a Stylist:</label> </h2>
+
 
   <button type="submit" name="AddStylist" class="btn btn-info"> Submit </button>
 </form>
-
-<br>
-
-<a href="/">Go to Stylist list</a>

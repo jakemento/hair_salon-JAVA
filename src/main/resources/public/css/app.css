@@ -7,7 +7,22 @@ h2 {
   padding-right: 50%;
 }
 
+h3 {
+  color: red;
+  width: 8%;
+  background-color: #66CCFF;
+}
+
 .btn {
   color: red;
   font-size: 22px;
+  width: 8%;
+  background-color: #66CCFF;
+}
+
+h1 {
+  color: red;
+  font-size: 22px;
+  width: 15%;
+  background-color: #66CCFF;
 }

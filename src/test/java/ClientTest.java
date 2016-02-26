@@ -36,15 +36,4 @@ public class ClientTest {
     assertEquals(savedClient.getName(), "James");
   }
 
-  
-
-
-  //
-  // @Test
-  // public void restaurant_deletes_true() {
-  //   Restaurant myRestaurant = new Restaurant("Voodoo Donuts", "best donuts around", 1);
-  //   myRestaurant.deleteRestaurant(0);
-  //   assertTrue(Restaurant.find(0) == null);
-  // }
-
 }

@@ -50,12 +50,4 @@ public class StylistTest {
    Client[] clients = new Client[] { firstClient, secondClient };
    assertTrue(myStylist.getClients().containsAll(Arrays.asList(clients)));
  }
-
-  // @Test
-  // public void Cuisine_deletes_true() {
-  //   Cuisine myCuisine = new Cuisine("mexican");
-  //   myCuisine.deleteCuisine(0);
-  //   assertTrue(Cuisine.find(0) == null);
-  // }
-
 }
