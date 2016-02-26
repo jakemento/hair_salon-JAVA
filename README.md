@@ -1,19 +1,20 @@
 # Best Restaurants
 
-##### Epicodus exercise using Java and Postgres, 01.21.2016
+##### Epicodus exercise using Java and Postgres, 02.26.2016
 
 ##### Author Names
+### Jacob Steinberg
 
 ## Description
-Add a description here
+This is a simple java app that is used to assign clients to stylists for a hair salon.
 
 ## Setup
 
 Clone this repository:
 ```
 $ cd ~/Desktop
-$ git clone https://github.com/LINK_TO_YOUR_REPO
-$ cd best-restaurants
+$ git clone https://github.com/jakemento/hair_salon-JAVA
+$ cd hair_salon-JAVA
 ```
 
 Open terminal and run Postgres:
@@ -21,11 +22,11 @@ Open terminal and run Postgres:
 $ postgres
 ```
 
-Open a new tab in terminal and create the `best-restaurants` database:
+Open a new tab in terminal and create the `hair_salon` database:
 ```
 $ psql
-$ CREATE DATABASE best_restaurants;
-$ psql best_restaurants < best_restaurants.sql
+$ CREATE DATABASE hair_salon;
+$ psql hair_salon < hair_salon.sql
 ```
 
 Navigate back to the directory where this repository has been cloned and run gradle:
@@ -35,7 +36,7 @@ $ gradle run
 
 ## Legal
 
-Copyright (c) 2015 Author names go here
+Copyright (c) 2015 Jacob Steinberg
 
 This software is licensed under the MIT license.
 
