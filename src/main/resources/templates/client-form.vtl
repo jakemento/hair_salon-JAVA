@@ -1,0 +1,17 @@
+<h2> Stylist: $stylist.getName()</h2>
+
+<ul>
+  #foreach($client in $clients)
+
+  <h3>  <li>Client: $client.getName()</li> </h3>
+  #end
+</ul>
+
+<form action="/:id" method="post">
+  <input id="stylist_id" name="stylist_id" type=hidden value="$stylist.getId()">
+  <label>Add a Client</label>
+  <input type="text" name="name" id="name" required>
+  <button type="submit" name="AddClient" class="btn btn-info">Submit</button>
+</form>
+
+<a href="/">Go Back Home</a>

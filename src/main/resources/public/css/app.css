@@ -1,0 +1,13 @@
+body {
+  background-image: url(http://images.all-free-download.com/images/graphiclarge/bear_gets_haircut_clip_art_18250.jpg);
+}
+
+h2 {
+  background-color: pink;
+  padding-right: 50%;
+}
+
+.btn {
+  color: red;
+  font-size: 22px;
+}

@@ -1,8 +1,20 @@
-<ul>
-#foreach ($stylist in $stylists)
-<li><a href="/stylist/$stylist.getId()">$stylist.getName()</li>
-#end
-</ul>
+<h1> Stylist LIST </h1>
 
-<!-- <a href="/cuisine-form">Add a cuisine</a> -->
-</br>
+
+#foreach ($stylist in $stylists)
+<h2> <a href="/$stylist.getId()">$stylist.getName() </a> </h2>
+#end
+
+
+
+<form action="/" method="post">
+  <input id="stylistName" name="stylistName" type="text">
+  <br>
+  <h2> <label> Add a Stylist:</label> </h2>
+
+  <button type="submit" name="AddStylist" class="btn btn-info"> Submit </button>
+</form>
+
+<br>
+
+<a href="/">Go to Stylist list</a>

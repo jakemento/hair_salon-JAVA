@@ -1,4 +1,3 @@
-import java.util.Map;
 import java.util.HashMap;
 import static spark.Spark.*;
 import java.util.List;
@@ -20,59 +19,39 @@ public class App {
 
     post("/", (request, reponse) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      String name = request.queryParams("name");
-      Stylist newStylist = new Stylist(name);
+      String stylistName = request.queryParams("stylistName");
+      Stylist newStylist = new Stylist(stylistName);
       newStylist.save();
-      model.put ("stylists", Stylist.all());
-      model.put("newStylist", newStylist);
+      List<Stylist> stylistList = newStylist.all();
+      model.put("stylists", stylistList);
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
 
-    // get("/:id", (request, reponse) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   model.put("template", "templates/cuisine-form.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    //
-    // post("/:id", (request, response) -> {
-    //    HashMap<String, Object> model = new HashMap<String, Object>();
-    //    Cuisine cuisine = Cuisine.find(Integer.parseInt(request.params(":id")));
-    //    model.put("cuisine", cuisine);
-    //    model.put("template", "templates/cuisine.vtl");
-    //    return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // get("/restaurant-form/:id", (request, response) -> {
-    //     HashMap<String, Object> model = new HashMap<String, Object>();
-    //     Cuisine cuisine = Cuisine.find(Integer.parseInt(request.params(":id")));
-    //     model.put("cuisine", cuisine);
-    //     model.put("template", "templates/restaurant-form.vtl");
-    //     return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // post("/cuisines/:id", (request, response) -> {
-    //     HashMap<String, Object> model = new HashMap<String, Object>();
-    //     String name = request.queryParams("name");
-    //     String description = request.queryParams("description");
-    //     int cuisine_Id = Integer.parseInt(request.params(":id"));
-    //     Cuisine cuisine = Cuisine.find(Integer.parseInt(request.params(":id")));
-    //     model.put("cuisine", cuisine);
-    //     Restaurant newRestaurant = new Restaurant(name,description,cuisine_Id);
-    //     newRestaurant.save();
-    //     model.put("template", "templates/cuisines.vtl");
-    //     return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // get("/cuisines/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //
-    //   model.put("template", "templates/cuisines.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+    get("/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+      List<Client> clients = stylist.getClients();
+      model.put("stylist", stylist);
+      model.put("clients", clients);
+      model.put("template", "templates/client-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
+    post("/:id", (request, response) -> {
+     HashMap<String, Object> model = new HashMap<String, Object>();
+     Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("stylist_id")));
+     int id = Integer.parseInt(request.queryParams("stylist_id"));
+     String name = request.queryParams("name");
+     Client newClient = new Client(name, id);
+     newClient.save();
+     List<Client> clients = stylist.getClients();
+     model.put("stylist", stylist);
+     model.put("clients", clients);
+     model.put("template", "templates/client-form.vtl");
+     return new ModelAndView(model, layout);
+   }, new VelocityTemplateEngine());
 
   }
 }
