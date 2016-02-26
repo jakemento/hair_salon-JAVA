@@ -10,6 +10,11 @@ This is a simple java app that is used to assign clients to stylists for a hair 
 
 ## Setup
 
+In PSQL:
+CREATE DATABASE hair_salon;
+CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);
+CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+
 Clone this repository:
 ```
 $ cd ~/Desktop
