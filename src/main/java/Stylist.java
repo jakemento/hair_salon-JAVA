@@ -1,52 +1,62 @@
 import org.sql2o.*;
 import java.util.List;
 
-// public class Cuisine {
-//   private int cuisine_id;
-//   private String type;
+public class Stylist {
+  private int id;
+  private String name;
+
+  public Stylist (String name) {
+    this.name = name;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
 //
-//   public Cuisine (String type) {
-//     this.type = type;
-//     //this.cuisine_id = cuisine_id;
-//   }
-//
-//   public int getId() {
-//     return cuisine_id;
-//   }
-//
-//   public String getType() {
-//     return type;
-//   }
-//
-//   @Override
-//   public boolean equals(Object otherCuisine){
-//     if (!(otherCuisine instanceof Cuisine)) {
-//       return false;
-//     } else {
-//       Cuisine newCuisine = (Cuisine) otherCuisine;
-//       return this.getType().equals(newCuisine.getType()) &&
-//         this.getId() == newCuisine.getId();
-//     }
-//   }
-//
-//   public void save() {
-//     try (Connection con = DB.sql2o.open()) {
-//       String sql = "INSERT INTO cuisine(type) VALUES (:type)";
-//       this.cuisine_id = (int) con.createQuery(sql, true)
-//          .addParameter("type", this.type)
-//          .executeUpdate()
-//          .getKey();
-//      }
-//   }
-//
-//
-//   public static List<Cuisine> all() {
-//     String sql = "SELECT cuisine_id, type FROM cuisine";
-//     try (Connection con = DB.sql2o.open()) {
-//       return con.createQuery(sql).executeAndFetch(Cuisine.class);
-//
-//     }
-//   }
+  @Override
+  public boolean equals(Object otherStylist){
+    if (!(otherStylist instanceof Stylist)) {
+      return false;
+    } else {
+      Stylist newStylist = (Stylist) otherStylist;
+      return this.getName().equals(newStylist.getName()) &&
+        this.getId() == newStylist.getId();
+    }
+  }
+
+  public void save() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO stylists(name) VALUES (:name)";
+      this.id = (int) con.createQuery(sql, true)
+         .addParameter("name", this.name)
+         .executeUpdate()
+         .getKey();
+     }
+  }
+
+
+  public static List<Stylist> all() {
+    String sql = "SELECT id, name FROM stylists";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Stylist.class);
+
+    }
+  }
+
+
+  public static Stylist find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM stylists where id=:id";
+      return con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Stylist.class);
+    }
+  }
+
 //
 //   public void update(String type) {
 //     this.type = type;
@@ -69,15 +79,7 @@ import java.util.List;
 //       }
 //     }
 //
-//     public static Cuisine find(int cuisine_id) {
-//       try(Connection con = DB.sql2o.open()) {
-//         String sql = "SELECT * FROM Cuisine where cuisine_id=:cuisine_id";
-//         return con.createQuery(sql)
-//         .addParameter("cuisine_id", cuisine_id)
-//         .executeAndFetchFirst(Cuisine.class);
-//       }
-//     }
-//
+
 //     public List<Restaurant> getRestaurants() {
 //       try(Connection con = DB.sql2o.open()) {
 //         String sql = "SELECT * FROM restaurants where cuisine_id=:cuisine_id";
@@ -85,5 +87,5 @@ import java.util.List;
 //           .addParameter("cuisine_id", this.cuisine_id)
 //           .executeAndFetch(Restaurant.class);
 //         }
-//       }
-// }
+      // }
+}

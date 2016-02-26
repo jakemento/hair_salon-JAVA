@@ -5,21 +5,30 @@ import java.util.Arrays;
 
 public class StylistTest {
 
-  // @Rule
-  // public DatabaseRule database = new DatabaseRule();
-  //
-  // @Test
-  // public void all_emptyAtFirst() {
-  //     assertEquals(Cuisine.all().size(), 0);
-  // }
-  //
-  // @Test
-  // public void save_savesIntoDatabase_true() {
-  //   Cuisine myCuisine = new Cuisine("Chinese");
-  //   myCuisine.save();
-  //   assertEquals(Cuisine.all().get(0).getType(), "Chinese");
-  // }
-  //
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
+
+  @Test
+  public void all_emptyAtFirst() {
+      assertEquals(Stylist.all().size(), 0);
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Stylist myStylist = new Stylist("Bob");
+    myStylist.save();
+    assertEquals(Stylist.all().get(0).getName(), "Bob");
+  }
+
+  @Test
+  public void find_findsStylistsInDatabase_true() {
+    Stylist myStylist = new Stylist ("Bob");
+    myStylist.save();
+    Stylist savedStylist = Stylist.find(myStylist.getId());
+    assertTrue(myStylist.equals(savedStylist));
+  }
+
+
   // @Test
   // public void update_Cuisine_true() {
   //   Cuisine testCuisine = new Cuisine("mexican");
@@ -36,14 +45,7 @@ public class StylistTest {
   //   myCuisine.deleteCuisine(0);
   //   assertTrue(Cuisine.find(0) == null);
   // }
-  // @Test
-  // public void find_findsCuisinesInDatabase_true() {
-  //   Cuisine myCuisine = new Cuisine ("mexican");
-  //   myCuisine.save();
-  //   Cuisine savedCuisine = Cuisine.find(myCuisine.getId());
-  //   assertTrue(myCuisine.equals(savedCuisine));
-  // }
-  //
+
   // @Test
   // public void getRestaurants_retrievesALlRestaurantsFromDatabase_RestaurantsList() {
   //   Cuisine myCuisine = new Cuisine ("Mexican");
