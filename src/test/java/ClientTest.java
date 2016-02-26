@@ -4,13 +4,13 @@ import org.sql2o.*;
 
 public class ClientTest {
 
-  // @Rule
-  // public DatabaseRule database = new DatabaseRule();
-  //
-  // @Test
-  // public void all_emptyAtFirst() {
-  //     assertEquals(Restaurant.all().size(), 0);
-  // }
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
+
+  @Test
+  public void all_emptyAtFirst() {
+      assertEquals(Client.all().size(), 0);
+  }
   //
   // @Test
   // public void all_savesIntoDatabase_true() {

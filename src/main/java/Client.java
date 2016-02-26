@@ -25,37 +25,36 @@ public class Client {
     return stylist_id;
   }
 
-//   @Override
-//   public boolean equals(Object otherRestaurant){
-//     if (!(otherRestaurant instanceof Restaurant)) {
-//       return false;
-//     } else {
-//       Restaurant newRestaurant = (Restaurant) otherRestaurant;
-//       return this.getName().equals(newRestaurant.getName()) &&
-//         this.getId() == newRestaurant.getId() && this.getDescription().equals(newRestaurant.getDescription()) && this.getCuisineId() == (newRestaurant.getCuisineId());
-//     }
-//   }
-//
-//   public void save() {
-//     try (Connection con = DB.sql2o.open()) {
-//       String sql = "INSERT INTO restaurants(name, description, cuisine_id) VALUES (:name, :description, :cuisine_id)";
-//       this.id = (int) con.createQuery(sql, true)
-//         .addParameter("name", this.name)
-//         .addParameter("description", this.description)
-//         .addParameter("cuisine_id", this.cuisine_id)
-//         .executeUpdate()
-//         .getKey();
-//     }
-//   }
-//
-//
-//
-//   public static List<Restaurant> all() {
-//     String sql = "SELECT id, name, description, cuisine_id FROM restaurants";
-//     try (Connection con = DB.sql2o.open()) {
-//       return con.createQuery(sql).executeAndFetch(Restaurant.class);
-//     }
-//   }
+  @Override
+  public boolean equals(Object otherClient){
+    if (!(otherClient instanceof Client)) {
+      return false;
+    } else {
+      Client newClient = (Client) otherClient;
+      return this.getName().equals(newClient.getName()) &&
+        this.getId() == newClient.getId() && this.getStylistId() == (newClient.getStylistId());
+    }
+  }
+
+  public void save() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO clients(name, stylist_id) VALUES (:name, :stylist_id)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .addParameter("stylist_id", this.stylist_id)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+
+
+  public static List<Client> all() {
+    String sql = "SELECT id, name, stylist_id FROM clients";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Client.class);
+    }
+  }
 //
 //   public void update(String name, String description, int cuisine_id) {
 //     try(Connection con = DB.sql2o.open()) {
@@ -96,4 +95,4 @@ public class Client {
 //         .executeAndFetch(Cuisine.class);
 //       }
 //     }
-// }
+}
