@@ -11,14 +11,22 @@ public class ClientTest {
   public void all_emptyAtFirst() {
       assertEquals(Client.all().size(), 0);
   }
-  //
-  // @Test
-  // public void all_savesIntoDatabase_true() {
-  //   Restaurant myRestaurant = new Restaurant("Voodoo Donuts", "best donuts around", 1);
-  //   myRestaurant.save();
-  //   assertEquals(Restaurant.all().get(0).getDescription(), "best donuts around");
-  // }
-  //
+
+  @Test
+  public void all_savesIntoDatabase_true() {
+    Client myClient = new Client("John", 1);
+    myClient.save();
+    assertEquals(Client.all().get(0).getName(), "John");
+  }
+
+  @Test
+  public void find_findsClientsInDatabase_true() {
+    Client myClient = new Client ("John", 1);
+    myClient.save();
+    Client savedClient = Client.find(myClient.getId());
+    assertTrue(myClient.equals(savedClient));
+  }
+
   // @Test
   // public void update_restaurant_true() {
   //   Restaurant testRestaurant = new Restaurant("Voodoo Donuts", "best donuts around", 1);
@@ -34,11 +42,5 @@ public class ClientTest {
   //   myRestaurant.deleteRestaurant(0);
   //   assertTrue(Restaurant.find(0) == null);
   // }
-  // @Test
-  // public void find_findsRestaurantsInDatabase_true() {
-  //   Restaurant myRestaurant = new Restaurant ("Voodoo Donuts", "best donuts around", 1);
-  //   myRestaurant.save();
-  //   Restaurant savedRestaurant = Restaurant.find(myRestaurant.getId());
-  //   assertTrue(myRestaurant.equals(savedRestaurant));
-  // }
+
 }

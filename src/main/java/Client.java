@@ -77,15 +77,15 @@ public class Client {
 //     }
 //   }
 //
-//   public static Restaurant find(int id) {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "SELECT * FROM restaurants where id=:id";
-//       Restaurant restaurant = con.createQuery(sql)
-//       .addParameter("id", id)
-//       .executeAndFetchFirst(Restaurant.class);
-//       return restaurant;
-//     }
-//   }
+  public static Client find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients where id=:id";
+      Client client = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Client.class);
+      return client;
+    }
+  }
 //
 //   public List<Cuisine> getCuisines() {
 //     try(Connection con = DB.sql2o.open()) {
