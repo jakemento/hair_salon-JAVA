@@ -85,13 +85,5 @@ public class Client {
       return client;
     }
   }
-//
-//   public List<Cuisine> getCuisines() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "SELECT * FROM cuisine where cuisine_id=:cuisine_id";
-//       return con.createQuery(sql)
-//         .addParameter("cuisine_id", cuisine_id)
-//         .executeAndFetch(Cuisine.class);
-//       }
-//     }
+
 }

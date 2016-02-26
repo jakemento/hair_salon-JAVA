@@ -35,6 +35,10 @@ public class ClientTest {
     Client savedClient = Client.all().get(0);
     assertEquals(savedClient.getName(), "James");
   }
+
+  
+
+
   //
   // @Test
   // public void restaurant_deletes_true() {

@@ -16,7 +16,7 @@ public class Stylist {
   public String getName() {
     return name;
   }
-//
+
   @Override
   public boolean equals(Object otherStylist){
     if (!(otherStylist instanceof Stylist)) {
@@ -67,8 +67,8 @@ public class Stylist {
       .addParameter("name", name)
       .executeUpdate();
       }
-//
-//   }
+
+  }
 //     public void deleteCuisine(int cuisine_id) {
 //       this.cuisine_id = cuisine_id;
 //       try(Connection con = DB.sql2o.open()) {
@@ -80,12 +80,12 @@ public class Stylist {
 //     }
 //
 
-//     public List<Restaurant> getRestaurants() {
-//       try(Connection con = DB.sql2o.open()) {
-//         String sql = "SELECT * FROM restaurants where cuisine_id=:cuisine_id";
-//         return con.createQuery(sql)
-//           .addParameter("cuisine_id", this.cuisine_id)
-//           .executeAndFetch(Restaurant.class);
-//         }
+    public List<Client> getClients() {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "SELECT * FROM clients where stylist_id=:id";
+        return con.createQuery(sql)
+          .addParameter("id", id)
+          .executeAndFetch(Client.class);
+        }
       }
 }

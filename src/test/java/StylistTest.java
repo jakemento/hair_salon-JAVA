@@ -38,6 +38,19 @@ public class StylistTest {
     assertEquals(savedStylist.getName(), "Jim");
   }
 
+
+  @Test
+ public void getClients_retrievesALlClientsFromDatabase_clientsList() {
+   Stylist myStylist = new Stylist("James");
+   myStylist.save();
+   Client firstClient = new Client("John", myStylist.getId());
+   firstClient.save();
+   Client secondClient = new Client("Pablo", myStylist.getId());
+   secondClient.save();
+   Client[] clients = new Client[] { firstClient, secondClient };
+   assertTrue(myStylist.getClients().containsAll(Arrays.asList(clients)));
+ }
+
   // @Test
   // public void Cuisine_deletes_true() {
   //   Cuisine myCuisine = new Cuisine("mexican");
@@ -45,16 +58,4 @@ public class StylistTest {
   //   assertTrue(Cuisine.find(0) == null);
   // }
 
-  // @Test
-  // public void getRestaurants_retrievesALlRestaurantsFromDatabase_RestaurantsList() {
-  //   Cuisine myCuisine = new Cuisine ("Mexican");
-  //   myCuisine.save();
-  //   Restaurant firstRestaurant = new Restaurant("VooDoo","donut shop",myCuisine.getId());
-  //   firstRestaurant.save();
-  //   Restaurant secondRestaurant = new Restaurant("sesame","donut shop",myCuisine.getId());
-  //   secondRestaurant.save();
-  //   Restaurant[] restaurants = new Restaurant[] { firstRestaurant, secondRestaurant };
-  //   assertEquals(myCuisine.getRestaurants().size(), 2);
-  //   assertTrue(myCuisine.getRestaurants().containsAll(Arrays.asList(restaurants)));
-  // }
 }
