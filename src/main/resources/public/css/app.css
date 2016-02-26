@@ -9,7 +9,7 @@ h2 {
 
 h3 {
   color: red;
-  width: 8%;
+  width: 10%;
   background-color: #66CCFF;
 }
 
@@ -25,4 +25,9 @@ h1 {
   font-size: 22px;
   width: 15%;
   background-color: #66CCFF;
+}
+
+.mytext {
+  width: 200px;
+  height: 50px;
 }
