@@ -49,5 +49,5 @@ public class StylistTest {
    secondClient.save();
    Client[] clients = new Client[] { firstClient, secondClient };
    assertTrue(myStylist.getClients().containsAll(Arrays.asList(clients)));
- }
+  }
 }

@@ -57,7 +57,6 @@ public class Stylist {
     }
   }
 
-//
   public void update(String name) {
     this.name = name;
     try(Connection con = DB.sql2o.open()) {
@@ -67,18 +66,7 @@ public class Stylist {
       .addParameter("name", name)
       .executeUpdate();
       }
-
   }
-//     public void deleteCuisine(int cuisine_id) {
-//       this.cuisine_id = cuisine_id;
-//       try(Connection con = DB.sql2o.open()) {
-//         String sql = "DELETE FROM cuisine WHERE cuisine_id = :cuisine_id";
-//         con.createQuery(sql)
-//         .addParameter("cuisine_id", cuisine_id)
-//         .executeUpdate();
-//       }
-//     }
-//
 
     public List<Client> getClients() {
       try(Connection con = DB.sql2o.open()) {
@@ -87,5 +75,23 @@ public class Stylist {
           .addParameter("id", id)
           .executeAndFetch(Client.class);
         }
-      }
+    }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM stylists WHERE id = :id;";
+      con.createQuery(deleteQuery)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public static void deleteAllStylists() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM stylists;";
+      con.createQuery(deleteQuery)
+      .executeUpdate();
+    }
+  }
+
 }

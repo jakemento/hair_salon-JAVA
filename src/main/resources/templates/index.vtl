@@ -3,6 +3,9 @@
 
 #foreach ($stylist in $stylists)
 <h2> <a href="/$stylist.getId()">$stylist.getName() </a> </h2>
+<form action ='/$stylist.getId()/deleteStylist' method ='post'>
+        <button type = 'submit'> Delete stylist </button>
+      </form>
 #end
 
 

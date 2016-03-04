@@ -53,5 +53,22 @@ public class App {
      return new ModelAndView(model, layout);
    }, new VelocityTemplateEngine());
 
+
+   post("/:id/deleteClient", (request, response) -> {
+      int id = Integer.parseInt(request.params("id"));
+      Client client = Client.find(id);
+      client.delete();
+      response.redirect("/");
+      return null;
+    });
+
+    post("/:id/deleteStylist", (request, response) -> {
+       int id = Integer.parseInt(request.params("id"));
+       Stylist stylist = Stylist.find(id);
+       stylist.delete();
+       response.redirect("/");
+       return null;
+     });
+
   }
 }

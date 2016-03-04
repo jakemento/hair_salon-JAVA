@@ -66,16 +66,7 @@ public class Client {
       .executeUpdate();
       }
   }
-//
-//   public static void deleteRestaurant(int id) {
-//     String sql = "DELETE FROM restaurants WHERE id=:id";
-//     try(Connection con = DB.sql2o.open()) {
-//       con.createQuery(sql)
-//       .addParameter("id", id)
-//       .executeUpdate();
-//     }
-//   }
-//
+
   public static Client find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients where id=:id";
@@ -85,5 +76,24 @@ public class Client {
       return client;
     }
   }
+
+  public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+    String deleteQuery = "DELETE FROM clients WHERE id = :id;";
+    con.createQuery(deleteQuery)
+    .addParameter("id", id)
+    .executeUpdate();
+  }
+}
+
+public static void deleteAllClients() {
+  try(Connection con = DB.sql2o.open()) {
+    String deleteQuery = "DELETE FROM clients;";
+    con.createQuery(deleteQuery)
+    .executeUpdate();
+  }
+}
+
+
 
 }

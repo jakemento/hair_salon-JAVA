@@ -2,8 +2,11 @@
 
 <ul>
   #foreach($client in $clients)
-
   <h3>  <li>Client: $client.getName()</li> </h3>
+
+    <form action ='/$client.getId()/deleteClient' method ='post'>
+            <button type = 'submit'> Delete client </button>
+    </form>
   #end
 </ul>
 
